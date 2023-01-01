@@ -1,1 +1,1 @@
-# BOJ_practice
+# BOJ 문제 풀이 레포지토리
