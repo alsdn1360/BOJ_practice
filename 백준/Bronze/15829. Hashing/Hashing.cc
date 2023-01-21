@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cmath>
 
 using namespace std;
 
@@ -11,12 +10,7 @@ int main() {
     cin >> L >> hash;
 
     for (i = 0; i < L; i++) {
-        if (r > M)
-            r = r % M;
-        if (result > M)
-            result = result % M;
-
-        result += (hash[i] - 96) * r;
+        result += (((hash[i] - 96) * (r % M)) % M) % M;
 
         r = r * 31;
     }
