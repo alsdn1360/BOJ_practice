@@ -28,6 +28,7 @@ int main() {
 
         if (num_lan >= N) {
             first = mid + 1;
+
             if (mid > ans)
                 ans = mid;
         } else
