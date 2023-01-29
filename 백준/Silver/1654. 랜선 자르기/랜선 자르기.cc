@@ -1,38 +1,40 @@
-#include<iostream>
+#include <iostream>
 
 using namespace std;
 
-int K, N, ans;
-int line[10001];
-int maxi = 0;
-long long mid, high, low;
+int i, K, N, lan[10001], ans = 0;
+int max_num = 0;
+long long first, mid, last;
 
 int main() {
     cin >> K >> N;
 
-    for (int i = 0; i < K; i++) {
-        cin >> line[i];
-        if (maxi < line[i])
-            maxi = line[i];
+    for (i = 0; i < K; i++) {
+        cin >> lan[i];
+        if (lan[i] > max_num)
+            max_num = lan[i];
     }
 
-    low = 1;
-    high = maxi;
-    ans = 0;
+    first = 1;
+    last = max_num;
 
-    while (low <= high) {
-        mid = (low + high) / 2;
-        int cnt = 0;
-        for (int i = 0; i < K; i++)
-            cnt += line[i] / mid;
+    while (first <= last) {
+        mid = (first + last) / 2;
 
-        if (cnt >= N) {
-            low = mid + 1;
-            if (ans < mid)
+        int num_lan = 0;
+
+        for (i = 0; i < K; i++)
+            num_lan += lan[i] / mid;
+
+        if (num_lan >= N) {
+            first = mid + 1;
+            if (mid > ans)
                 ans = mid;
         } else
-            high = mid - 1;
+            last = mid - 1;
     }
 
     cout << ans;
+
+    return 0;
 }
